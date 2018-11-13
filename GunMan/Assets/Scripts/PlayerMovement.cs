@@ -1,20 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerMovement : Move
+public class PlayerMovement : ICharacterMovement
 {
-    [SerializeField] float speed;
-
+    ICharacterInput input;
+    CharacterSettings settings;
     Rigidbody2D rb;
 
-    public PlayerMovement(Rigidbody2D rb)
+    public PlayerMovement(Rigidbody2D rb, ICharacterInput input, CharacterSettings settings)
     {
+        this.settings = settings;
+        this.input = input;
         this.rb = rb;
     }
 
-    protected override void Movement(ICharacterInput input)
+    public void Movement()
     {
         if (input.Horizontal == 0) return;
-        rb.AddForce(input.Horizontal * speed * Vector2.one);
+        rb.AddForce(input.Horizontal * settings.MoveSpeed * Vector2.right);
     }
 }

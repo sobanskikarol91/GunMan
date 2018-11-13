@@ -8,7 +8,7 @@ public class PlayerInput : ICharacterInput
 
     public void ReadInput()
     {
-        Horizontal = Input.GetAxis("horizonral");
-        Vertical = Input.GetAxis("vertical");
+        Horizontal = Input.GetAxis("Horizontal");
+        Vertical = Input.GetAxis("Vertical");
     }
 }
